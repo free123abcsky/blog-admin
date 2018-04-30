@@ -1,16 +1,23 @@
-import Vue from 'vue';
-import iView from 'iview';
-import {router} from './router/index';
-import {appRouter} from './router/router';
-import store from './store';
-import App from './app.vue';
-import '@/locale';
-import 'iview/dist/styles/iview.css';
-import VueI18n from 'vue-i18n';
-import util from './libs/util';
+import Vue from 'vue'
+import iView from 'iview'
+import {router} from './router/index'
+import {appRouter} from './router/router'
+import store from './store'
+import App from './app.vue'
+import '@/locale'
+import 'iview/dist/styles/iview.css'
+import VueI18n from 'vue-i18n'
+import util from './libs/util'
+import storage from './libs/storage'
 
 Vue.use(VueI18n);
 Vue.use(iView);
+/**
+ * 设置本地存储
+ * */
+Vue.use(storage, {
+    storageKeyPrefix: 'izl-'
+});
 
 new Vue({
     el: '#app',
@@ -28,7 +35,7 @@ new Vue({
         // 权限菜单过滤相关
         this.$store.commit('updateMenulist');
         // iview-admin检查更新
-        util.checkUpdate(this);
+       //util.checkUpdate(this);
     },
     created () {
         let tagsList = [];

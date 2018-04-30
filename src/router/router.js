@@ -85,12 +85,6 @@ export const appRouter = [
                 title: '角色管理',
                 component: () => import('@/views/system-manage/role-manage/role-manage.vue')
             },
-            // {
-            //     path: 'md-editor',
-            //     name: 'md-editor',
-            //     title: '资源管理',
-            //     component: () => import('@/views/my-components/markdown-editor/markdown-editor.vue')
-            // },
             {
                 path: 'system-config',
                 name: 'system-config',
@@ -108,60 +102,9 @@ export const appRouter = [
                 name: 'system-log',
                 title: '系统日志',
                 component: () => import('@/views/system-manage/system-log/system-log.vue')
-            },
-            // {
-            //     path: 'md-editor',
-            //     name: 'md-editor',
-            //     title: '消息管理',
-            //     component: () => import('@/views/my-components/markdown-editor/markdown-editor.vue')
-            // },
-            // {
-            //     path: 'md-editor',
-            //     name: 'md-editor',
-            //     title: '公告管理',
-            //     component: () => import('@/views/my-components/markdown-editor/markdown-editor.vue')
-            // },
-            // {
-            //     path: 'md-editor',
-            //     name: 'md-editor',
-            //     title: '广告管理',
-            //     component: () => import('@/views/my-components/markdown-editor/markdown-editor.vue')
-            // }
+            }
         ]
-    },
-    // {
-    //     path: '/component',
-    //     icon: 'social-buffer',
-    //     name: 'component',
-    //     title: '文档管理',
-    //     component: Main,
-    //     children: [
-    //         {
-    //             path: 'text-editor',
-    //             name: 'text-editor',
-    //             title: '用户管理',
-    //             component: () => import('@/views/my-components/text-editor/text-editor.vue')
-    //         },
-    //         {
-    //             path: 'md-editor',
-    //             name: 'md-editor',
-    //             title: '文档类别',
-    //             component: () => import('@/views/my-components/markdown-editor/markdown-editor.vue')
-    //         },
-    //         {
-    //             path: 'md-editor',
-    //             name: 'md-editor',
-    //             title: '标签管理',
-    //             component: () => import('@/views/my-components/markdown-editor/markdown-editor.vue')
-    //         },
-    //         {
-    //             path: 'md-editor',
-    //             name: 'md-editor',
-    //             title: '留言管理',
-    //             component: () => import('@/views/my-components/markdown-editor/markdown-editor.vue')
-    //         }
-    //     ]
-    // }
+    }
 ];
 
 // 所有上面定义的路由都要写在下面的routers里

@@ -1,12 +1,19 @@
-import Cookies from 'js-cookie';
+import Cookies from 'js-cookie'
+import api from '../api'
+import Vue from "vue";
 
-const user = {
-    state: {},
+const systemManage = {
+    state: {
+
+    },
     mutations: {
+        //设置登录状态
+        setLoginStatus (state, status) {
+            state.isLogin = !!status;
+        },
+        //注销
         logout (state, vm) {
-            Cookies.remove('user');
-            Cookies.remove('password');
-            Cookies.remove('access');
+
             // 恢复默认样式
             let themeLink = document.querySelector('link[name="theme"]');
             themeLink.setAttribute('href', '');
@@ -19,8 +26,14 @@ const user = {
             if (theme) {
                 localStorage.theme = theme;
             }
+
+            Vue.$localStorage.$delete('user');
         }
+    },
+
+    actions: {
+
     }
 };
 
-export default user;
+export default systemManage

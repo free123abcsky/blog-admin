@@ -9,8 +9,8 @@
                 <img src="../images/avatar.png">
             </div>
             <Form ref="loginForm" :model="form" :rules="rules">
-                <FormItem prop="userName">
-                    <Input v-model="form.userName" placeholder="请输入用户名">
+                <FormItem prop="username">
+                    <Input v-model="form.username" placeholder="请输入用户名">
                     <span slot="prepend">
                                     <Icon :size="16" type="person"></Icon>
                                 </span>
@@ -32,16 +32,17 @@
 </template>
 
 <script>
-import Cookies from 'js-cookie';
+import { mapMutations } from 'vuex'
+import api from '@/store/api'
 export default {
     data () {
         return {
             form: {
-                userName: 'iview_admin',
-                password: ''
+                username: 'freesky',
+                password: '123456abc'
             },
             rules: {
-                userName: [
+                username: [
                     { required: true, message: '账号不能为空', trigger: 'blur' }
                 ],
                 password: [
@@ -51,22 +52,26 @@ export default {
         };
     },
     methods: {
+        ...mapMutations([
+            'setAvator'
+        ]),
         handleSubmit () {
+
+            const _this = this
             this.$refs.loginForm.validate((valid) => {
                 if (valid) {
-                    Cookies.set('user', this.form.userName);
-                    Cookies.set('password', this.form.password);
-                    this.$store.commit('setAvator', 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3448484253,3685836170&fm=27&gp=0.jpg');
-                    if (this.form.userName === 'iview_admin') {
-                        Cookies.set('access', 0);
-                    } else {
-                        Cookies.set('access', 1);
-                    }
-                    this.$router.push({
-                        name: 'home_index'
-                    });
+
+                    api.Login(_this.form).then((result) => {
+
+                        result.data.time = new Date().getTime()
+                        _this.$localStorage.$set('user', result.data)
+                        _this.setAvator('https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3448484253')
+                        _this.$router.push({
+                            name: 'home_index'
+                         })
+                    })
                 }
-            });
+            })
         }
     }
 };

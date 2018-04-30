@@ -52,10 +52,10 @@
                                 <Row type="flex" justify="center">
                                     <Input v-model="newToDoItemValue" icon="compose" placeholder="请输入..." style="width: 300px" />
                                 </Row>
-                                <Row slot="footer">
+ <!--                               <Row slot="footer">
                                     <Button type="text" @click="cancelAdd">取消</Button>
                                     <Button type="primary" @click="addNew">确定</Button>
-                                </Row>
+                                </Row>-->
                             </Modal>
                             <div class="to-do-list-con">
                                 <div v-for="(item, index) in toDoList" :key="'todo-item' + (toDoList.length - index)" class="to-do-item">
